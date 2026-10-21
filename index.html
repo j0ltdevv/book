@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=18">
+<link rel="stylesheet" href="assets/style.css?v=19">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -48,7 +48,7 @@
 
   <!-- ───────────── HERO ───────────── -->
   <section id="top" class="hero">
-    <p class="eyebrow" data-reveal>Portfolio — 2026</p>
+    <p class="eyebrow" data-reveal>J’ai 17 ans, je construis des trucs</p>
 
     <h1 class="hero__title">
       <span class="hero__line"><span class="hero__word">Julien</span></span>
@@ -56,8 +56,8 @@
     </h1>
 
     <p class="hero__sub" data-reveal>
-      17 ans. Je construis des outils de sécurité pour agents IA,
-      des applications desktop en Rust et des jeux multijoueurs.
+      Des outils de sécurité pour agents IA, du Rust parce qu’Electron
+      me gonfle, et des jeux multijoueurs entre potes.
     </p>
 
     <dl class="hero__spec" data-reveal>
@@ -96,7 +96,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>01</span><span class="project__lang">TypeScript</span></p>
         <h3 data-reveal>MCPGUARD</h3>
-        <p class="project__desc" data-reveal>Les agents IA ont besoin de clés d'API. En pratique elles finissent en clair dans des fichiers de config, lisibles par n'importe qui. MCPGUARD les range dans le keychain du système et laisse une référence <code>mcpguard://&lt;id&gt;</code> à la place. Le CLI audite les configs, migre les secrets, révoque un accès.</p>
+        <p class="project__desc" data-reveal>
+      Les clés d'API des agents finissent en clair dans les fichiers de config, et là n'importe qui peut les lire. MCPGUARD les range dans le keychain du système et ne laisse qu'une référence <code>mcpguard://&lt;id&gt;</code> à la place. Le CLI audite les configs, migre ce qui traîne et révoque un accès.
+    </p>
         <ul class="tags" data-reveal><li>CLI</li><li>keychain OS</li><li>agents IA</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/MCPGUARD" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -115,7 +117,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>02</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>agnt</h3>
-        <p class="project__desc" data-reveal>Agent offensif autonome. On lui donne une mission en français et une cible. Il choisit ses outils dans un pool qualifié, lance chaque étape dans une sandbox bwrap, et rend un rapport. La politique OPA refuse par défaut : sans outil autorisé, il renvoie un refus nommé au lieu d'inventer un résultat.</p>
+        <p class="project__desc" data-reveal>
+      Un agent offensif qui travaille tout seul. On lui donne une mission en français et une cible, il choisit ses outils dans un pool qualifié, lance chaque étape dans une sandbox bwrap et rend un rapport. La politique OPA refuse par défaut, donc quand un outil n'est pas autorisé il répond refus nommé au lieu d'inventer un résultat.
+    </p>
         <ul class="tags" data-reveal><li>offensif</li><li>sandbox bwrap</li><li>OPA</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/agnt" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -134,7 +138,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>03</span><span class="project__lang">TypeScript</span></p>
         <h3 data-reveal>Who Listening</h3>
-        <p class="project__desc" data-reveal>Un jeu entre potes. Chacun branche son Spotify, une manche démarre, un morceau tombe : les autres doivent trouver à qui il appartient. Cinq catégories, des bots pour compléter la table, et un timer calé sur <code>Date.now()</code> pour que la fin de manche reste juste même si le réseau rame.</p>
+        <p class="project__desc" data-reveal>
+      Un jeu entre potes. Chacun branche son Spotify, une manche démarre, un morceau tombe et les autres doivent deviner à qui il appartient. Cinq catégories, des bots pour compléter la table, et un timer calé sur <code>Date.now()</code> pour que la fin de manche reste juste même quand le réseau rame.
+    </p>
         <ul class="tags" data-reveal><li>React Native</li><li>Spotify API</li><li>multijoueur</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/spotify-app" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -153,7 +159,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>04</span><span class="project__lang">Python · PyPI</span></p>
         <h3 data-reveal>venv-proxy</h3>
-        <p class="project__desc" data-reveal><code>python</code> et <code>pip</code> devraient toujours taper dans le <code>.venv</code> du projet courant. Personne ne pense à <code>source .venv/bin/activate</code>, les agents IA encore moins. venv-proxy remonte l'arborescence, trouve le venv le plus proche, vérifie que le binaire est exécutable et pose un shim. Publié sur PyPI.</p>
+        <p class="project__desc" data-reveal>
+      <code>python</code> et <code>pip</code> devraient toujours taper dans le <code>.venv</code> du projet. Je ne pense jamais à taper <code>source .venv/bin/activate</code>, et les agents encore moins. venv-proxy remonte l'arborescence, trouve le venv le plus proche, vérifie que le binaire se lance et pose un shim. Publié sur PyPI.
+    </p>
         <ul class="tags" data-reveal><li>Python</li><li>PyPI</li><li>DX</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -172,7 +180,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>05</span><span class="project__lang">Next.js</span></p>
         <h3 data-reveal>Provenance</h3>
-        <p class="project__desc" data-reveal>Un chiffre sur les mobilisations lycéennes ne vaut rien s'il est impossible à retrouver. Ici chaque nombre renvoie à sa requête source, recoupée à d'autres, et les données viennent du MCP du gouvernement. L'API est versionnée, exportable en CSV et GeoJSON, avec des colonnes figées pour ne pas casser les traitements des journalistes.</p>
+        <p class="project__desc" data-reveal>
+      Un chiffre sur les mobilisations lycéens ne vaut rien si on ne peut pas le retrouver. Ici chaque nombre renvoie à sa requête source, recoupée avec d'autres, et les données viennent du MCP du gouvernement. L'API est versionnée, exportable en CSV et GeoJSON, avec des colonnes figées pour ne pas casser les traitements des journalistes.
+    </p>
         <ul class="tags" data-reveal><li>open data</li><li>SQLite</li><li>API versionnée</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/observatoire" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -191,7 +201,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>06</span><span class="project__lang">Flutter</span></p>
         <h3 data-reveal>NeuraGreen</h3>
-        <p class="project__desc" data-reveal>Chaque requête à un modèle coûte de l'électricité, de l'eau et de l'argent, et personne ne le voit. Cette app Flutter lit les factures OpenAI, convertit les tokens en CO₂e, litres et dollars, et compare les modèles entre eux. Les clés restent dans le Keychain, l'historique marche hors ligne.</p>
+        <p class="project__desc" data-reveal>
+      Chaque requête à un modèle coûte de l'électricité, de l'eau et de l'argent, et personne ne le voit. Cette app Flutter lit mes factures OpenAI, convertit les tokens en CO₂e, litres et dollars, et compare les modèles entre eux. Les clés restent dans le Keychain, l'historique marche hors ligne.
+    </p>
         <ul class="tags" data-reveal><li>Flutter</li><li>CO₂e</li><li>hors ligne</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/NeuraGreen" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -210,7 +222,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>07</span><span class="project__lang">Rust</span></p>
         <h3 data-reveal>obsidian-rs</h3>
-        <p class="project__desc" data-reveal>Réécriture complète d'Obsidian en Rust avec iced, sans Electron : un seul binaire, et une consommation RAM sans commune mesure. Le portage s'appuie sur un MCP de reverse engineering pour analyser le comportement de l'original. Une première mondiale.</p>
+        <p class="project__desc" data-reveal>
+      Obsidian réécrit en Rust avec iced, sans Electron : un seul binaire, et la RAM ne monte plus à 800 Mo. Le portage s'appuie sur un MCP de reverse engineering pour analyser le comportement de l'original. Une première mondiale.
+    </p>
         <ul class="tags" data-reveal><li>Rust</li><li>iced</li><li>reverse engineering</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/obsidian-rs" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -229,7 +243,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>08</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>pentest-lab</h3>
-        <p class="project__desc" data-reveal>Un banc d'essai pour agents de sécurité offensifs. Un lab Docker reproduit une vraie chaîne d'attaque, portail captif compris, avec six vulnérabilités plantées exprès (H1 à H6). Les agents sont notés sur des critères de preuve objectifs, et tout part d'un <code>scope.yaml</code> explicite.</p>
+        <p class="project__desc" data-reveal>
+      Un banc d'essai pour tester des agents de sécurité offensifs. Un lab Docker rejoue une vraie chaîne d'attaque, portail captif compris, avec six vulnérabilités plantées exprès (H1 à H6). Les agents sont notés sur des critères de preuve, et chaque run part d'un <code>scope.yaml</code> explicite.
+    </p>
         <ul class="tags" data-reveal><li>Docker</li><li>agents offensifs</li><li>benchmark</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/pentest-lab" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -248,7 +264,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>09</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>bookmark-watcher</h3>
-        <p class="project__desc" data-reveal>Mes bookmarks X s'entassaient sans que je les lise. Ce bot les surveille en continu et m'envoie sur Telegram le lien, un verdict, un résumé et des sources web. Il interroge l'API GraphQL directement avec les cookies de session, sans navigateur : quelques Mo de RAM et moins d'une seconde par cycle.</p>
+        <p class="project__desc" data-reveal>
+      Mes bookmarks X s'entassaient sans que je les lise. Un bot les surveille en continu et m'envoie sur Telegram le lien, un verdict, un résumé et des sources web. Il interroge l'API GraphQL directement avec les cookies de session, sans navigateur : quelques Mo de RAM et moins d'une seconde par cycle.
+    </p>
         <ul class="tags" data-reveal><li>Telegram</li><li>GraphQL</li><li>automatisation</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/bookmark-watcher" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -267,7 +285,9 @@
       <div class="project__info">
         <p class="project__num" data-reveal><span>10</span><span class="project__lang">Linux · systemd</span></p>
         <h3 data-reveal>stack</h3>
-        <p class="project__desc" data-reveal>Une quarantaine de services systemd et une douzaine de timers, supervisés par Hermes : bots Telegram, veilles, ponts vers des agents, routines de nuit. Chaque brique a sa relance automatique, et tout continue de tourner après déconnexion, sur ma machine comme sur quatre serveurs distants.</p>
+        <p class="project__desc" data-reveal>
+      Tout tourne chez moi : une quarantaine de services systemd et une douzaine de timers, avec des bots Telegram, des veilles, des ponts vers des agents et des routines de nuit. Hermes les supervise, chaque service se relance tout seul, et rien ne s'arrête quand je ferme mon laptop. Ma machine, plus quatre serveurs distants.
+    </p>
         <ul class="tags" data-reveal><li>systemd</li><li>Hermes</li><li>24/7</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
@@ -300,7 +320,7 @@
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=18"></script>
-<script src="assets/app.js?v=18"></script>
+<script src="assets/gl.js?v=19"></script>
+<script src="assets/app.js?v=19"></script>
 </body>
 </html>
