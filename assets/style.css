@@ -650,6 +650,101 @@ main > section{
   border-radius:3px;
 }
 
+
+/* ── bandeau technique ─────────────────────── */
+.marquee{
+  position:relative;
+  z-index:2;
+  overflow:hidden;
+  border-top:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  padding:1.05rem 0;
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.marquee__track{
+  display:flex;
+  width:max-content;
+  gap:2.6rem;
+  animation:slide 48s linear infinite;
+  will-change:transform;
+}
+.marquee__track span{
+  display:inline-flex;
+  align-items:center;
+  gap:2.6rem;
+  font-family:var(--font-mono);
+  font-size:.68rem;
+  letter-spacing:.26em;
+  text-transform:uppercase;
+  color:rgba(238,240,248,.44);
+  white-space:nowrap;
+}
+.marquee__track i{
+  color:var(--accent);
+  font-style:normal;
+  font-size:.5rem;
+  opacity:.55;
+}
+@keyframes slide{
+  from{ transform:translate3d(0,0,0); }
+  to{ transform:translate3d(-50%,0,0); }
+}
+
+/* ── entrée en fondu ───────────────────────── */
+.js body{ animation:fadein .9s ease both; }
+@keyframes fadein{
+  from{ opacity:0; }
+  to{ opacity:1; }
+}
+
+/* ── rail d'index ──────────────────────────── */
+.rail{
+  position:fixed;
+  opacity:0;
+  transition:opacity .6s ease;
+  right:clamp(1rem,2.1vw,2.4rem);
+  top:50%;
+  transform:translateY(-50%);
+  z-index:40;
+  display:none;
+}
+@media (min-width:1180px){
+  .rail{ display:block; }
+}
+.rail.is-on{ opacity:1; }
+.rail ul{
+  list-style:none;
+  margin:0; padding:0;
+  display:flex;
+  flex-direction:column;
+  gap:.85rem;
+  align-items:flex-end;
+}
+.rail a{
+  display:flex;
+  align-items:center;
+  gap:.55rem;
+  font-family:var(--font-mono);
+  font-size:.62rem;
+  letter-spacing:.12em;
+  color:rgba(238,240,248,.36);
+  transition:color .35s ease;
+}
+.rail a::after{
+  content:"";
+  width:14px; height:1px;
+  background:currentColor;
+  opacity:.45;
+  transition:width .45s cubic-bezier(.16,1,.3,1), opacity .45s ease;
+}
+.rail a:hover{ color:rgba(238,240,248,.72); }
+.rail a.is-active{ color:var(--accent); }
+.rail a.is-active::after{ width:28px; opacity:1; }
+
+/* le contenu passe au-dessus des décors */
+.project__info{ position:relative; z-index:1; }
+
 /* ── responsive ────────────────────────────── */
 @media (max-width:900px){
   .project{
