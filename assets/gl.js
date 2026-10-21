@@ -103,7 +103,8 @@
       float t = u_time * 0.028;
       float warp = fbm(q * 1.10 + vec2(t, -t * 0.5));
       float fil  = fbm(q * vec2(2.4, 4.2) + vec2(warp * 1.6, t * 0.85) + 7.0);
-      float band = smoothstep(0.54, 0.93, fil);
+      float fil2 = fbm(q * vec2(4.6, 7.2) - vec2(t * 0.55, warp * 1.15) + 19.0);
+      float band = smoothstep(0.56, 0.90, fil) * (0.50 + 0.50 * smoothstep(0.42, 0.86, fil2));
       band *= 1.0 - smoothstep(0.16, 0.92, abs(p.y + 0.12));
 
       vec3 mint   = vec3(0.28, 0.88, 0.80);
