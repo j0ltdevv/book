@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=19">
+<link rel="stylesheet" href="assets/style.css?v=20">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -97,7 +97,7 @@
         <p class="project__num" data-reveal><span>01</span><span class="project__lang">TypeScript</span></p>
         <h3 data-reveal>MCPGUARD</h3>
         <p class="project__desc" data-reveal>
-      Les clés d'API des agents finissent en clair dans les fichiers de config, et là n'importe qui peut les lire. MCPGUARD les range dans le keychain du système et ne laisse qu'une référence <code>mcpguard://&lt;id&gt;</code> à la place. Le CLI audite les configs, migre ce qui traîne et révoque un accès.
+      Les clés d'API traînent en clair dans les fichiers de config, et n'importe qui peut les lire. MCPGUARD les met dans le keychain du système et ne laisse qu'une référence <code>mcpguard://&lt;id&gt;</code> à la place. Le CLI audite les configs, migre les secrets déjà en clair et révoque un accès.
     </p>
         <ul class="tags" data-reveal><li>CLI</li><li>keychain OS</li><li>agents IA</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/MCPGUARD" target="_blank" rel="noopener" data-reveal>
@@ -118,7 +118,7 @@
         <p class="project__num" data-reveal><span>02</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>agnt</h3>
         <p class="project__desc" data-reveal>
-      Un agent offensif qui travaille tout seul. On lui donne une mission en français et une cible, il choisit ses outils dans un pool qualifié, lance chaque étape dans une sandbox bwrap et rend un rapport. La politique OPA refuse par défaut, donc quand un outil n'est pas autorisé il répond refus nommé au lieu d'inventer un résultat.
+      Un agent offensif autonome. On lui donne une mission en français et une cible, il choisit ses outils dans un pool qualifié, chaque étape tourne dans une sandbox bwrap, et il rend un rapport. Quand la politique OPA refuse un outil, il le dit.
     </p>
         <ul class="tags" data-reveal><li>offensif</li><li>sandbox bwrap</li><li>OPA</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/agnt" target="_blank" rel="noopener" data-reveal>
@@ -139,7 +139,7 @@
         <p class="project__num" data-reveal><span>03</span><span class="project__lang">TypeScript</span></p>
         <h3 data-reveal>Who Listening</h3>
         <p class="project__desc" data-reveal>
-      Un jeu entre potes. Chacun branche son Spotify, une manche démarre, un morceau tombe et les autres doivent deviner à qui il appartient. Cinq catégories, des bots pour compléter la table, et un timer calé sur <code>Date.now()</code> pour que la fin de manche reste juste même quand le réseau rame.
+      Un jeu entre potes sur Spotify. Une manche démarre, un morceau tombe, les autres doivent deviner à qui il appartient. Cinq catégories, des bots pour compléter la table, et un timer calé sur <code>Date.now()</code> pour que la fin de manche reste juste même quand le réseau rame.
     </p>
         <ul class="tags" data-reveal><li>React Native</li><li>Spotify API</li><li>multijoueur</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/spotify-app" target="_blank" rel="noopener" data-reveal>
@@ -181,7 +181,7 @@
         <p class="project__num" data-reveal><span>05</span><span class="project__lang">Next.js</span></p>
         <h3 data-reveal>Provenance</h3>
         <p class="project__desc" data-reveal>
-      Un chiffre sur les mobilisations lycéens ne vaut rien si on ne peut pas le retrouver. Ici chaque nombre renvoie à sa requête source, recoupée avec d'autres, et les données viennent du MCP du gouvernement. L'API est versionnée, exportable en CSV et GeoJSON, avec des colonnes figées pour ne pas casser les traitements des journalistes.
+      Les chiffres sur les mobilisations des lycéens ne valent rien si on ne peut pas les retrouver. Chaque nombre renvoie à sa requête source, recoupée avec d'autres, et les données viennent du MCP du gouvernement. L'API est versionnée, exportable en CSV et GeoJSON, colonnes figées pour ne pas casser les traitements des journalistes.
     </p>
         <ul class="tags" data-reveal><li>open data</li><li>SQLite</li><li>API versionnée</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/observatoire" target="_blank" rel="noopener" data-reveal>
@@ -223,7 +223,7 @@
         <p class="project__num" data-reveal><span>07</span><span class="project__lang">Rust</span></p>
         <h3 data-reveal>obsidian-rs</h3>
         <p class="project__desc" data-reveal>
-      Obsidian réécrit en Rust avec iced, sans Electron : un seul binaire, et la RAM ne monte plus à 800 Mo. Le portage s'appuie sur un MCP de reverse engineering pour analyser le comportement de l'original. Une première mondiale.
+      Obsidian réécrit en Rust avec iced : un seul binaire, sans Chromium derrière. Le portage s'appuie sur un MCP de reverse engineering pour analyser le comportement de l'original.
     </p>
         <ul class="tags" data-reveal><li>Rust</li><li>iced</li><li>reverse engineering</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/obsidian-rs" target="_blank" rel="noopener" data-reveal>
@@ -244,7 +244,7 @@
         <p class="project__num" data-reveal><span>08</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>pentest-lab</h3>
         <p class="project__desc" data-reveal>
-      Un banc d'essai pour tester des agents de sécurité offensifs. Un lab Docker rejoue une vraie chaîne d'attaque, portail captif compris, avec six vulnérabilités plantées exprès (H1 à H6). Les agents sont notés sur des critères de preuve, et chaque run part d'un <code>scope.yaml</code> explicite.
+      Ce lab Docker rejoue une vraie chaîne d'attaque, portail captif compris, avec six vulnérabilités plantées exprès (H1 à H6). C'est un banc d'essai pour les agents de sécurité offensifs : ils sont notés sur des critères de preuve, et chaque run part d'un <code>scope.yaml</code> explicite.
     </p>
         <ul class="tags" data-reveal><li>Docker</li><li>agents offensifs</li><li>benchmark</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/pentest-lab" target="_blank" rel="noopener" data-reveal>
@@ -286,7 +286,7 @@
         <p class="project__num" data-reveal><span>10</span><span class="project__lang">Linux · systemd</span></p>
         <h3 data-reveal>stack</h3>
         <p class="project__desc" data-reveal>
-      Tout tourne chez moi : une quarantaine de services systemd et une douzaine de timers, avec des bots Telegram, des veilles, des ponts vers des agents et des routines de nuit. Hermes les supervise, chaque service se relance tout seul, et rien ne s'arrête quand je ferme mon laptop. Ma machine, plus quatre serveurs distants.
+      Tout tourne chez moi : des bots Telegram, des veilles, des ponts vers des agents, des routines de nuit. Hermes les supervise, chaque service se relance tout seul, et rien ne s'arrête quand je ferme mon laptop. Quarante services systemd, douze timers, ma machine et quatre serveurs distants.
     </p>
         <ul class="tags" data-reveal><li>systemd</li><li>Hermes</li><li>24/7</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener" data-reveal>
@@ -320,7 +320,7 @@
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=19"></script>
-<script src="assets/app.js?v=19"></script>
+<script src="assets/gl.js?v=20"></script>
+<script src="assets/app.js?v=20"></script>
 </body>
 </html>
