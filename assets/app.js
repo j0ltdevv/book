@@ -95,7 +95,13 @@
       kids.forEach((el, i) => el.style.setProperty("--d", `${Math.min(i * 70, 420)}ms`));
     });
 
-    items.forEach((el) => io.observe(el));
+    /* tout ce qui est déjà à l'écran au chargement apparaît sans attendre */
+    const fold = window.innerHeight * 0.96;
+    items.forEach((el) => {
+      const top = el.getBoundingClientRect().top;
+      if (top < fold) el.classList.add("is-in");
+      else io.observe(el);
+    });
   }
 
   /* ── inclinaison des panneaux de code ─────── */

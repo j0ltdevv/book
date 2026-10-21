@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=15">
+<link rel="stylesheet" href="assets/style.css?v=17">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -263,12 +263,30 @@
       </figure>
     </article>
 
+    <article class="project" id="p10" data-project data-index="10">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>10</span><span class="project__lang">Linux · systemd</span></p>
+        <h3 data-reveal>stack</h3>
+        <p class="project__desc" data-reveal>Une quarantaine de services systemd et une douzaine de timers, supervisés par Hermes : bots Telegram, veilles, ponts vers des agents, routines de nuit. Chaque brique a sa relance automatique, et tout continue de tourner après déconnexion, sur ma machine comme sur quatre VPS.</p>
+        <ul class="tags" data-reveal><li>systemd</li><li>Hermes</li><li>24/7</li></ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">systemd/omp-watch.timer</span>
+        </figcaption>
+<pre class="code"><code><span class="ln">[Unit]</span><span class="ln">Description=omp-watch — le pouls du veilleur (5 min)</span><span class="ln">Documentation=file:///home/jolt/.local/bin/omp-watch</span><span class="ln"> </span><span class="ln">[Timer]</span><span class="ln">OnBootSec=3min</span><span class="ln">OnUnitActiveSec=5min</span><span class="ln">AccuracySec=30s</span><span class="ln"> </span><span class="ln">[Install]</span><span class="ln">WantedBy=timers.target</span></code></pre>
+      </figure>
+    </article>
+
     <p class="more" data-reveal>
       Aussi en ligne :
       <a href="https://github.com/j0ltdevv/redteam-agent" target="_blank" rel="noopener">redteam-agent</a>,
       <a href="https://github.com/j0ltdevv/bots" target="_blank" rel="noopener">bots</a>,
       <a href="https://github.com/j0ltdevv/pronote-blocus" target="_blank" rel="noopener">pronote-blocus</a>,
-      <a href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener">stack</a>.
     </p>
   </section>
 
@@ -282,7 +300,7 @@
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=15"></script>
-<script src="assets/app.js?v=15"></script>
+<script src="assets/gl.js?v=17"></script>
+<script src="assets/app.js?v=17"></script>
 </body>
 </html>
