@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html,body{ width:1200px; height:630px; overflow:hidden; }
+  body{
+    background:#05060a;
+    color:#eef0f8;
+    font-family:"Inter Tight",system-ui,sans-serif;
+    position:relative;
+    padding:64px 72px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  body::before{
+    content:"";
+    position:absolute; inset:0;
+    background:
+      radial-gradient(60% 55% at 78% 22%, rgba(96,72,200,.32), transparent 62%),
+      radial-gradient(55% 50% at 12% 92%, rgba(30,150,140,.26), transparent 65%),
+      radial-gradient(80% 70% at 50% 120%, rgba(10,40,60,.5), transparent 70%);
+    filter:blur(6px);
+  }
+  body::after{
+    content:"";
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.55) .8px, transparent .9px),
+                     radial-gradient(rgba(255,255,255,.30) .7px, transparent .8px);
+    background-size:190px 170px, 120px 130px;
+    background-position:20px 30px, 70px 90px;
+    opacity:.30;
+  }
+  .top,.bottom{ position:relative; z-index:2; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ display:flex; align-items:center; gap:10px; font-size:15px; font-weight:500; letter-spacing:.01em; }
+  .dot{ width:8px; height:8px; border-radius:50%; background:#6ff3cf; box-shadow:0 0 16px rgba(111,243,207,.9); }
+  .top .tag{
+    font-family:"JetBrains Mono",monospace; font-size:11px; letter-spacing:.22em;
+    text-transform:uppercase; color:rgba(238,240,248,.45);
+  }
+  .middle{ position:relative; z-index:2; }
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace; font-size:12px; letter-spacing:.2em;
+    text-transform:uppercase; color:rgba(238,240,248,.5);
+    display:flex; align-items:center; gap:14px; margin-bottom:22px;
+  }
+  .eyebrow::before{ content:""; width:34px; height:1px; background:#6ff3cf; }
+  h1{
+    font-size:132px; line-height:.86; letter-spacing:-.05em; font-weight:500;
+  }
+  h1 em{
+    font-family:"Instrument Serif",Georgia,serif; font-style:italic; font-weight:400;
+    font-size:1.05em; letter-spacing:-.02em;
+  }
+  .sub{
+    margin-top:26px; font-size:22px; font-weight:300; color:rgba(238,240,248,.72);
+    max-width:640px; line-height:1.4;
+  }
+  .bottom{
+    font-family:"JetBrains Mono",monospace; font-size:13px;
+    color:rgba(238,240,248,.5); letter-spacing:.04em;
+    border-top:1px solid rgba(238,240,248,.12);
+    padding-top:20px;
+  }
+  .bottom strong{ color:#6ff3cf; font-weight:400; }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand"><span class="dot"></span>Julien Poitou</div>
+    <div class="tag">Portfolio — 2026</div>
+  </div>
+
+  <div class="middle">
+    <div class="eyebrow">Code · Sécurité · Systèmes</div>
+    <h1>Julien<br><em>Poitou</em></h1>
+    <p class="sub">Outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.</p>
+  </div>
+
+  <div class="bottom">
+    <span>github.com/<strong>j0ltdevv</strong></span>
+    <span>HTML · CSS · GLSL</span>
+  </div>
+</body>
+</html>
