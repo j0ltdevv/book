@@ -98,51 +98,6 @@
     items.forEach((el) => io.observe(el));
   }
 
-  /* ── curseur ──────────────────────────────── */
-  const cursor = document.querySelector(".cursor");
-
-  if (cursor && fine && !reduce) {
-    let cx = window.innerWidth / 2;
-    let cy = window.innerHeight / 2;
-    let tx = cx;
-    let ty = cy;
-    let raf = 0;
-    let shown = false;
-
-    const loop = () => {
-      cx += (tx - cx) * 0.18;
-      cy += (ty - cy) * 0.18;
-      cursor.style.transform = `translate3d(${cx.toFixed(2)}px, ${cy.toFixed(2)}px, 0)`;
-      raf = requestAnimationFrame(loop);
-    };
-
-    window.addEventListener("pointermove", (e) => {
-      tx = e.clientX;
-      ty = e.clientY;
-      if (!shown) {
-        shown = true;
-        cx = tx;
-        cy = ty;
-        cursor.classList.add("is-active");
-        raf = requestAnimationFrame(loop);
-      }
-    }, { passive: true });
-
-    const hot = "a, button, .panel, .tags li";
-    document.addEventListener("pointerover", (e) => {
-      if (e.target.closest(hot)) cursor.classList.add("is-hot");
-    });
-    document.addEventListener("pointerout", (e) => {
-      if (e.target.closest(hot)) cursor.classList.remove("is-hot");
-    });
-
-    document.addEventListener("pointerleave", () => {
-      cursor.classList.remove("is-active");
-      shown = false;
-      cancelAnimationFrame(raf);
-    });
-  }
-
   /* ── inclinaison des panneaux de code ─────── */
   if (fine && !reduce) {
     document.querySelectorAll("[data-tilt]").forEach((panel) => {
