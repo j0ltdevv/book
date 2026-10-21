@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=5">
+<link rel="stylesheet" href="assets/style.css?v=6">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -123,6 +123,8 @@
 <span class="tok-k">const</span> SERVICE_NAME = <span class="tok-s">'mcpguard'</span>;
 <span class="tok-k">const</span> VAULT_PREFIX = <span class="tok-s">'mcpguard://'</span>;
 
+<span class="tok-c">…</span>
+
 <span class="tok-k">export class</span> <span class="tok-f">Vault</span> {
   <span class="tok-k">private</span> service: <span class="tok-t">string</span>;
 
@@ -165,8 +167,8 @@
 <span class="tok-k">function</span> <span class="tok-f">envelope</span>(body: <span class="tok-t">unknown</span>, params: <span class="tok-t">URLSearchParams</span>) {
   <span class="tok-k">return</span> NextResponse.<span class="tok-f">json</span>({
     genere_le: <span class="tok-k">new</span> <span class="tok-t">Date</span>().<span class="tok-f">toISOString</span>(),
-    perimetre: <span class="tok-s">"France métropolitaine (hors DOM)"</span>,
-    base: <span class="tok-s">"Ministère de l'Éducation nationale, UAI"</span>,
+    perimetre: <span class="tok-s">"France métropolitaine (hors DOM et collectivités d'outre-mer)"</span>,
+    base: <span class="tok-s">"Ministère de l'Éducation nationale, identifiants UAI"</span>,
     filtres: <span class="tok-t">Object</span>.<span class="tok-f">fromEntries</span>(params),
     ...(body <span class="tok-k">as object</span>),
   });
@@ -233,20 +235,18 @@
           <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="panel__file">hotel-lab/fake-aruba/aruba.py</span>
         </figcaption>
-<pre class="code"><code><span class="tok-c">"""fake-aruba : réplique du redirecteur de portail captif du
-contrôleur Aruba observé sur le réseau Hotel Demo ville-demo.
-
+<pre class="code"><code><span class="tok-c">"""fake-aruba : réplique du redirecteur de portail captif du contrôleur Aruba observé
+sur le réseau Hotel Demo ville-demo (http://10.10.128.1/). Simule :
   - la page meta-refresh
-  - le 302 vers login-url.php avec hash SHA-1
-  - l'endpoint d'autorisation MAC
-
+  - le 302 vers login-url.php avec hash SHA-1 (H5 : secret statique faible planté)
+  - l'endpoint d'autorisation MAC appelé par le portail après login
 Usage mandat/lab uniquement — cf. scope.yaml à la racine.
 """</span>
 <span class="tok-k">from</span> flask <span class="tok-k">import</span> Flask, redirect, request
 
 app = <span class="tok-f">Flask</span>(__name__)
 
-<span class="tok-c"># MAC authentifiées après validation du portail</span>
+<span class="tok-c"># MAC "authentifiées" après validation du portail (miroir du contrôleur)</span>
 authorized_macs = <span class="tok-f">set</span>()</code></pre>
       </figure>
     </article>
@@ -278,7 +278,7 @@ authorized_macs = <span class="tok-f">set</span>()</code></pre>
     devices = client.<span class="tok-f">devices</span>()
 
     <span class="tok-k">if</span> <span class="tok-f">len</span>(devices) == <span class="tok-n">0</span>:
-        <span class="tok-f">print</span>(<span class="tok-s">"Aucun appareil trouvé."</span>)
+        <span class="tok-f">print</span>(<span class="tok-s">"Aucun appareil trouvé. Assure-toi que BlueStacks est lancé et ADB activé."</span>)
         <span class="tok-k">return</span> <span class="tok-t">None</span>
 
     device = devices[<span class="tok-n">0</span>]
@@ -323,7 +323,7 @@ le chiffré.
     <span class="tok-k">try</span>:
         <span class="tok-k">return</span> <span class="tok-f">Fernet</span>(secret.<span class="tok-f">encode</span>())
     <span class="tok-k">except</span> (<span class="tok-t">ValueError</span>, <span class="tok-t">TypeError</span>) <span class="tok-k">as</span> exc:
-        <span class="tok-k">raise</span> <span class="tok-f">SecretError</span>(<span class="tok-s">"Clé Fernet invalide"</span>) <span class="tok-k">from</span> exc</code></pre>
+        <span class="tok-c">…  # message explicite si la clé est mal formée</span></code></pre>
       </figure>
     </article>
 
@@ -390,7 +390,7 @@ le chiffré.
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=5"></script>
-<script src="assets/app.js?v=5"></script>
+<script src="assets/gl.js?v=6"></script>
+<script src="assets/app.js?v=6"></script>
 </body>
 </html>
