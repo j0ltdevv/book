@@ -24,7 +24,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=10">
+<link rel="stylesheet" href="assets/style.css?v=11">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -94,7 +94,7 @@
   <section id="projets" class="projects">
     <header class="section-head">
       <h2 data-reveal>Projets</h2>
-      <p data-reveal>Sept choses que j'ai construites — du coffre-fort de clés au jeu multijoueur.</p>
+      <p data-reveal>Huit choses que j'ai construites — du coffre-fort de clés au shim Python publié sur PyPI.</p>
     </header>
 
     <article class="project" id="p1" data-project data-index="01">
@@ -116,6 +116,8 @@
       </figure>
     </article>
 
+
+
     <article class="project" id="p2" data-project data-index="02">
       <div class="project__info">
         <p class="project__num" data-reveal><span>02</span><span class="project__lang">Python</span></p>
@@ -134,6 +136,8 @@
 <pre class="code"><code><span class="ln"><span class="tok-k">def</span> <span class="tok-f">_dans</span>(racine: <span class="tok-t">Path</span>, chemin: <span class="tok-t">Path</span>) -&gt; <span class="tok-t">bool</span>:</span><span class="ln">    <span class="tok-d">"""Vérification de containment par commonpath, pas par startswith.</span><span class="ln"></span><span class="ln">    startswith("/a/b") accepte "/a/b-malin" : c'est exactement la faille à éviter.</span><span class="ln">    """</span></span><span class="ln">    <span class="tok-k">try</span>:</span><span class="ln">        <span class="tok-k">return</span> os.path.<span class="tok-f">commonpath</span>(</span><span class="ln">            [<span class="tok-f">str</span>(racine), <span class="tok-f">str</span>(chemin)]</span><span class="ln">        ) == <span class="tok-f">str</span>(racine)</span><span class="ln">    <span class="tok-k">except</span> <span class="tok-t">ValueError</span>:</span><span class="ln">        <span class="tok-c"># Chemins sur des lecteurs/racines différents.</span></span><span class="ln">        <span class="tok-k">return</span> <span class="tok-k">False</span></span></code></pre>
       </figure>
     </article>
+
+
 
     <article class="project" id="p3" data-project data-index="03">
       <div class="project__info">
@@ -156,7 +160,28 @@
 
     <article class="project" id="p4" data-project data-index="04">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>04</span><span class="project__lang">Next.js</span></p>
+        <p class="project__num" data-reveal><span>04</span><span class="project__lang">Python · PyPI</span></p>
+        <h3 data-reveal>venv-proxy</h3>
+        <p class="project__desc" data-reveal>Personne ne se souvient de taper <code>source .venv/bin/activate</code> — et les agents IA encore moins. venv-proxy remonte l'arborescence pour trouver le <code>.venv</code> le plus proche, vérifie que le binaire est réellement exécutable, et installe un shim transparent : <code>python</code> et <code>pip</code> tombent toujours sur le bon environnement. Publié sur PyPI.</p>
+        <ul class="tags" data-reveal><li>Python</li><li>PyPI</li><li>DX</li></ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">venv_proxy/resolver.py</span>
+        </figcaption>
+<pre class="code"><code><span class="ln">for i, parent in <span class="tok-f">enumerate</span>([cwd, *cwd.parents]):</span><span class="ln">    <span class="tok-k">if</span> i &gt;= max_depth:</span><span class="ln">        <span class="tok-k">break</span></span><span class="ln">    candidate = parent / <span class="tok-s">".venv"</span> / <span class="tok-s">"bin"</span> / binary</span><span class="ln"> </span><span class="ln">    <span class="tok-c"># Check if candidate exists (follows symlinks)</span></span><span class="ln">    <span class="tok-k">if</span> <span class="tok-k">not</span> candidate.<span class="tok-f">exists</span>():</span><span class="ln">        <span class="tok-k">continue</span></span><span class="ln"> </span><span class="ln">    <span class="tok-k">if</span> <span class="tok-k">not</span> candidate.<span class="tok-f">is_file</span>():</span><span class="ln">        <span class="tok-k">continue</span></span><span class="ln"> </span><span class="ln">    <span class="tok-k">try</span>:</span><span class="ln">        mode = candidate.<span class="tok-f">stat</span>().st_mode</span><span class="ln">        <span class="tok-k">if</span> <span class="tok-k">not</span> (mode &amp; <span class="tok-n">0o111</span>):  <span class="tok-c"># Not executable</span></span><span class="ln">            <span class="tok-k">continue</span></span><span class="ln">    <span class="tok-k">except</span> (<span class="tok-t">OSError</span>, <span class="tok-t">PermissionError</span>):</span><span class="ln">        <span class="tok-k">continue</span></span><span class="ln"> </span><span class="ln">    <span class="tok-k">return</span> candidate</span></code></pre>
+      </figure>
+    </article>
+
+
+
+    <article class="project" id="p5" data-project data-index="05">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>05</span><span class="project__lang">Next.js</span></p>
         <h3 data-reveal>observatoire</h3>
         <p class="project__desc" data-reveal>Un registre des mobilisations lycéennes conçu pour être vérifiable : chaque chiffre renvoie à la requête qui l'a produit. L'API publique est versionnée et expose les mêmes données en CSV et GeoJSON, avec les noms de colonnes figés pour ne pas casser les traitements des journalistes.</p>
         <ul class="tags" data-reveal><li>open data</li><li>SQLite</li><li>API versionnée</li></ul>
@@ -173,9 +198,11 @@
       </figure>
     </article>
 
-    <article class="project" id="p5" data-project data-index="05">
+
+
+    <article class="project" id="p6" data-project data-index="06">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>05</span><span class="project__lang">Flutter</span></p>
+        <p class="project__num" data-reveal><span>06</span><span class="project__lang">Flutter</span></p>
         <h3 data-reveal>NeuraGreen</h3>
         <p class="project__desc" data-reveal>Rend visible ce que consomme une requête IA : CO₂e, eau, tokens et coût, par modèle et dans le temps. Les clés restent dans le Keychain ou le Keystore, le contenu des prompts n'est jamais lu, et tout l'historique reste consultable hors ligne.</p>
         <ul class="tags" data-reveal><li>Flutter</li><li>privacy-first</li><li>hors ligne</li></ul>
@@ -192,9 +219,11 @@
       </figure>
     </article>
 
-    <article class="project" id="p6" data-project data-index="06">
+
+
+    <article class="project" id="p7" data-project data-index="07">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>06</span><span class="project__lang">Rust</span></p>
+        <p class="project__num" data-reveal><span>07</span><span class="project__lang">Rust</span></p>
         <h3 data-reveal>obsidian-rs</h3>
         <p class="project__desc" data-reveal>Client Obsidian natif en Rust avec iced : rendu GPU, thèmes clair et sombre appliqués à chaud, taille de fenêtre persistée. Un binaire unique, pas d'Electron — pour un éditeur de notes qui démarre vite et tient en mémoire.</p>
         <ul class="tags" data-reveal><li>Rust</li><li>iced</li><li>desktop natif</li></ul>
@@ -211,9 +240,11 @@
       </figure>
     </article>
 
-    <article class="project" id="p7" data-project data-index="07">
+
+
+    <article class="project" id="p8" data-project data-index="08">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>07</span><span class="project__lang">Python</span></p>
+        <p class="project__num" data-reveal><span>08</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>pentest-lab</h3>
         <p class="project__desc" data-reveal>Répliques fidèles de contrôleurs de portail captif et de services réels, pour s'entraîner hors ligne. Chaque lab tourne en environnement isolé, avec un périmètre écrit dans <code>scope.yaml</code> et des cibles comme des données anonymisées.</p>
         <ul class="tags" data-reveal><li>sécurité offensive</li><li>Flask</li><li>lab isolé</li></ul>
@@ -236,7 +267,6 @@
       <a href="https://github.com/j0ltdevv/bots" target="_blank" rel="noopener">bots</a>,
       <a href="https://github.com/j0ltdevv/pronote-blocus" target="_blank" rel="noopener">pronote-blocus</a>,
       <a href="https://github.com/j0ltdevv/bookmark-watcher" target="_blank" rel="noopener">bookmark-watcher</a>,
-      <a href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener">venv-proxy</a>,
       <a href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener">stack</a>.
     </p>
   </section>
@@ -294,7 +324,7 @@
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=10"></script>
-<script src="assets/app.js?v=10"></script>
+<script src="assets/gl.js?v=11"></script>
+<script src="assets/app.js?v=11"></script>
 </body>
 </html>
