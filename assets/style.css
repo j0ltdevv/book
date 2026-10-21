@@ -385,7 +385,7 @@ main > section{
 .project{
   position:relative;
   display:grid;
-  grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  grid-template-columns:minmax(0,0.88fr) minmax(0,1.12fr);
   gap:clamp(2rem,5vw,4.5rem);
   align-items:center;
   padding:clamp(2.1rem,4.4vw,3.5rem) 0;
@@ -538,8 +538,9 @@ main > section{
   margin:0;
   padding:1.15rem 1.1rem 1.3rem;
   overflow-x:auto;
-  mask-image:linear-gradient(90deg,#000 92%,rgba(0,0,0,.35) 100%);
-  -webkit-mask-image:linear-gradient(90deg,#000 92%,rgba(0,0,0,.35) 100%);
+  mask-image:linear-gradient(90deg,#000 94%,rgba(0,0,0,.45) 100%);
+  -webkit-mask-image:linear-gradient(90deg,#000 94%,rgba(0,0,0,.45) 100%);
+  white-space:pre;
   font-family:var(--font-mono);
   font-size:clamp(.68rem,.86vw,.79rem);
   line-height:1.72;
@@ -551,10 +552,16 @@ main > section{
 .code::-webkit-scrollbar{ height:6px; }
 .code::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.16); border-radius:3px; }
 .code code{ font-family:inherit; }
+.code .ln{
+  display:block;
+  width:max-content;
+  min-width:100%;
+}
 
 .tok-k{ color:#a78bfa; }
 .tok-s{ color:#6ff3cf; }
 .tok-c{ color:rgba(238,240,248,.34); font-style:italic; }
+.tok-d{ color:rgba(238,240,248,.60); }
 .tok-f{ color:#8ab4ff; }
 .tok-t{ color:#ffd48a; }
 .tok-n{ color:#ff9f6b; }
@@ -764,7 +771,7 @@ main > section{
 /* alternance : les projets pairs mettent le code à gauche */
 @media (min-width:901px){
   .project:nth-of-type(even){
-    grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    grid-template-columns:minmax(0,1.12fr) minmax(0,0.88fr);
   }
   .project:nth-of-type(even) .project__info{ order:2; }
   .project:nth-of-type(even) .panel{ order:1; }
@@ -903,11 +910,15 @@ main > section{
   .hero__title{ font-size:clamp(3rem,17vw,5rem); }
   .hero__meta{ font-size:.68rem; }
   .code{
-    font-size:.62rem;
+    font-size:.60rem;
     padding:.95rem .85rem 1.05rem;
-    mask-image:linear-gradient(90deg,#000 82%,transparent 100%);
-    -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent 100%);
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    overflow-x:hidden;
+    mask-image:none;
+    -webkit-mask-image:none;
   }
+  .code .ln{ width:auto; }
   .nav__links{ font-size:.76rem; }
   .scroll-cue{ display:none; }
   .foot{ font-size:.62rem; }

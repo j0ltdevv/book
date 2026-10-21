@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Julien Poitou — code, sécurité, systèmes</title>
-<meta name="description" content="Portfolio de Julien Poitou : outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.">
+<meta name="description" content="Portfolio de Julien Poitou : outils de sécurité pour agents IA, applications desktop en Rust, jeu multijoueur.">
 <meta name="color-scheme" content="dark">
 <meta property="og:title" content="Julien Poitou — code, sécurité, systèmes">
-<meta property="og:description" content="Outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.">
+<meta property="og:description" content="Outils de sécurité pour agents IA, applications desktop en Rust, jeu multijoueur.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://j0ltdevv.github.io/book/">
 <meta property="og:site_name" content="Julien Poitou">
@@ -17,14 +17,14 @@
 <meta property="og:image:alt" content="Julien Poitou — code, sécurité, systèmes">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Julien Poitou — code, sécurité, systèmes">
-<meta name="twitter:description" content="Outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.">
+<meta name="twitter:description" content="Outils de sécurité pour agents IA, applications desktop en Rust, jeu multijoueur.">
 <meta name="twitter:image" content="https://j0ltdevv.github.io/book/assets/og.png">
 <meta name="theme-color" content="#05060a">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305060a'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%236ff3cf'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/style.css?v=6">
+<link rel="stylesheet" href="assets/style.css?v=10">
 <script>document.documentElement.classList.replace('no-js','js');</script>
 </head>
 <body>
@@ -59,8 +59,8 @@
     </h1>
 
     <p class="hero__sub" data-reveal>
-      16 ans. Je construis des outils de sécurité pour agents IA,
-      des applications desktop en Rust et des bots qui tournent 24/7.
+      17 ans. Je construis des outils de sécurité pour agents IA,
+      des applications desktop en Rust et des jeux multijoueurs.
     </p>
 
     <dl class="hero__spec" data-reveal>
@@ -94,21 +94,15 @@
   <section id="projets" class="projects">
     <header class="section-head">
       <h2 data-reveal>Projets</h2>
-      <p data-reveal>Six choses que j'ai construites, du coffre-fort de clés au client desktop.</p>
+      <p data-reveal>Sept choses que j'ai construites — du coffre-fort de clés au jeu multijoueur.</p>
     </header>
 
     <article class="project" id="p1" data-project data-index="01">
       <div class="project__info">
         <p class="project__num" data-reveal><span>01</span><span class="project__lang">TypeScript</span></p>
         <h3 data-reveal>MCPGUARD</h3>
-        <p class="project__desc" data-reveal>
-          Un coffre-fort pour les identifiants des serveurs MCP. Les clés d'API
-          des agents IA vivent dans le keychain de l'OS et sont référencées par
-          une URI <code>mcpguard://</code> — jamais en clair dans un fichier de config.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>CLI</li><li>keychain OS</li><li>agents IA</li>
-        </ul>
+        <p class="project__desc" data-reveal>Un agent IA a besoin de clés d'API — et ces clés finissent en clair dans les fichiers de configuration. MCPGUARD les déplace dans le keychain du système et ne laisse derrière lui qu'une référence <code>mcpguard://&lt;id&gt;</code>. Le CLI audite les configs existantes, migre les secrets et révoque un accès sans toucher au reste.</p>
+        <ul class="tags" data-reveal><li>CLI</li><li>keychain OS</li><li>agents IA</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/MCPGUARD" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
         </a>
@@ -118,40 +112,54 @@
           <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="panel__file">src/lib/vault.ts</span>
         </figcaption>
-<pre class="code"><code><span class="tok-k">import</span> keytar <span class="tok-k">from</span> <span class="tok-s">'keytar'</span>;
-
-<span class="tok-k">const</span> SERVICE_NAME = <span class="tok-s">'mcpguard'</span>;
-<span class="tok-k">const</span> VAULT_PREFIX = <span class="tok-s">'mcpguard://'</span>;
-
-<span class="tok-c">…</span>
-
-<span class="tok-k">export class</span> <span class="tok-f">Vault</span> {
-  <span class="tok-k">private</span> service: <span class="tok-t">string</span>;
-
-  <span class="tok-f">constructor</span>(serviceName: <span class="tok-t">string</span> = SERVICE_NAME) {
-    <span class="tok-k">this</span>.service = serviceName;
-  }
-
-  <span class="tok-c">/** Generate a vault reference string for a credential */</span>
-  <span class="tok-k">static</span> <span class="tok-f">generateReference</span>(id: <span class="tok-t">string</span>): <span class="tok-t">string</span> {
-    <span class="tok-k">return</span> <span class="tok-s">`${VAULT_PREFIX}${id}`</span>;
-  }
-}</code></pre>
+<pre class="code"><code><span class="ln"><span class="tok-k">import</span> keytar <span class="tok-k">from</span> <span class="tok-s">'keytar'</span>;</span><span class="ln"></span><span class="ln"><span class="tok-k">const</span> SERVICE_NAME = <span class="tok-s">'mcpguard'</span>;</span><span class="ln"><span class="tok-k">const</span> VAULT_PREFIX = <span class="tok-s">'mcpguard://'</span>;</span><span class="ln"></span><span class="ln"><span class="tok-c">…</span></span><span class="ln"></span><span class="ln"><span class="tok-k">export class</span> <span class="tok-f">Vault</span> {</span><span class="ln">  <span class="tok-k">private</span> service: <span class="tok-t">string</span>;</span><span class="ln"></span><span class="ln">  <span class="tok-f">constructor</span>(serviceName: <span class="tok-t">string</span> = SERVICE_NAME) {</span><span class="ln">    <span class="tok-k">this</span>.service = serviceName;</span><span class="ln">  }</span><span class="ln"></span><span class="ln">  <span class="tok-c">/** Generate a vault reference string for a credential */</span></span><span class="ln">  <span class="tok-k">static</span> <span class="tok-f">generateReference</span>(id: <span class="tok-t">string</span>): <span class="tok-t">string</span> {</span><span class="ln">    <span class="tok-k">return</span> <span class="tok-s">`${VAULT_PREFIX}${id}`</span>;</span><span class="ln">  }</span><span class="ln">}</span></code></pre>
       </figure>
     </article>
 
     <article class="project" id="p2" data-project data-index="02">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>02</span><span class="project__lang">Next.js</span></p>
+        <p class="project__num" data-reveal><span>02</span><span class="project__lang">Python</span></p>
+        <h3 data-reveal>agnt</h3>
+        <p class="project__desc" data-reveal>Une mission en français et une cible. L'agent choisit lui-même ses outils dans un pool qualifié, exécute chaque étape dans une sandbox <code>bwrap</code>, puis corrèle les résultats en rapport. La politique OPA refuse par défaut : sans outil autorisé, il rend un refus nommé — jamais un résultat inventé.</p>
+        <ul class="tags" data-reveal><li>sécurité</li><li>sandbox bwrap</li><li>OPA</li></ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/agnt" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">PHASE3/slice/garde_chemin.py</span>
+        </figcaption>
+<pre class="code"><code><span class="ln"><span class="tok-k">def</span> <span class="tok-f">_dans</span>(racine: <span class="tok-t">Path</span>, chemin: <span class="tok-t">Path</span>) -&gt; <span class="tok-t">bool</span>:</span><span class="ln">    <span class="tok-d">"""Vérification de containment par commonpath, pas par startswith.</span><span class="ln"></span><span class="ln">    startswith("/a/b") accepte "/a/b-malin" : c'est exactement la faille à éviter.</span><span class="ln">    """</span></span><span class="ln">    <span class="tok-k">try</span>:</span><span class="ln">        <span class="tok-k">return</span> os.path.<span class="tok-f">commonpath</span>(</span><span class="ln">            [<span class="tok-f">str</span>(racine), <span class="tok-f">str</span>(chemin)]</span><span class="ln">        ) == <span class="tok-f">str</span>(racine)</span><span class="ln">    <span class="tok-k">except</span> <span class="tok-t">ValueError</span>:</span><span class="ln">        <span class="tok-c"># Chemins sur des lecteurs/racines différents.</span></span><span class="ln">        <span class="tok-k">return</span> <span class="tok-k">False</span></span></code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p3" data-project data-index="03">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>03</span><span class="project__lang">TypeScript</span></p>
+        <h3 data-reveal>Who Listening</h3>
+        <p class="project__desc" data-reveal>Jeu multijoueur où tes amis devinent les morceaux que tu écoutes vraiment. OAuth Spotify, cinq catégories (guilty pleasures, vieux favoris, bandes originales), des bots pour compléter une partie, et un timer calé sur <code>Date.now()</code> : la fin de manche reste juste même si le réseau rame.</p>
+        <ul class="tags" data-reveal><li>React Native</li><li>Spotify API</li><li>temps réel</li></ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/spotify-app" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">components/CircularTimer.tsx</span>
+        </figcaption>
+<pre class="code"><code><span class="ln"><span class="tok-k">const</span> initialProgress = <span class="tok-f">useRef</span>(timeLeft / maxTime).current;</span><span class="ln"><span class="tok-k">const</span> progress = <span class="tok-f">useRef</span>(<span class="tok-k">new</span> <span class="tok-f">Animated.Value</span>(initialProgress)).current;</span><span class="ln"></span><span class="ln"><span class="tok-k">const</span> radius = (size - <span class="tok-n">20</span>) / <span class="tok-n">2</span>;</span><span class="ln"><span class="tok-k">const</span> circumference = <span class="tok-n">2</span> * <span class="tok-t">Math</span>.PI * radius;</span><span class="ln"></span><span class="ln"><span class="tok-f">useEffect</span>(() =&gt; {</span><span class="ln">  <span class="tok-c">// Lancer une animation fluide et continue vers 0</span></span><span class="ln">  <span class="tok-t">Animated</span>.<span class="tok-f">timing</span>(progress, {</span><span class="ln">    toValue: <span class="tok-n">0</span>,</span><span class="ln">    duration: timeLeft * <span class="tok-n">1000</span>, <span class="tok-c">// Durée restante exacte en ms</span></span><span class="ln">    useNativeDriver: <span class="tok-k">true</span>, <span class="tok-c">// Optimisation native (60 FPS)</span></span><span class="ln">    isInteraction: <span class="tok-k">false</span>,</span><span class="ln">  }).<span class="tok-f">start</span>();</span><span class="ln">}, []);</span></code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p4" data-project data-index="04">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>04</span><span class="project__lang">Next.js</span></p>
         <h3 data-reveal>observatoire</h3>
-        <p class="project__desc" data-reveal>
-          Registre sourcé et auditable des mobilisations lycéennes. API publique
-          versionnée, exports CSV et GeoJSON stables pour les journalistes :
-          chaque chiffre renvoie à la requête qui l'a produit.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>open data</li><li>SQLite</li><li>API versionnée</li>
-        </ul>
+        <p class="project__desc" data-reveal>Un registre des mobilisations lycéennes conçu pour être vérifiable : chaque chiffre renvoie à la requête qui l'a produit. L'API publique est versionnée et expose les mêmes données en CSV et GeoJSON, avec les noms de colonnes figés pour ne pas casser les traitements des journalistes.</p>
+        <ul class="tags" data-reveal><li>open data</li><li>SQLite</li><li>API versionnée</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/observatoire" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
         </a>
@@ -161,33 +169,35 @@
           <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="panel__file">app/api/v1/routes.ts</span>
         </figcaption>
-<pre class="code"><code><span class="tok-k">export const</span> dynamic = <span class="tok-s">"force-dynamic"</span>;
-
-<span class="tok-c">/** En-tête commun : sans ça, un chiffre floats sans contexte. */</span>
-<span class="tok-k">function</span> <span class="tok-f">envelope</span>(body: <span class="tok-t">unknown</span>, params: <span class="tok-t">URLSearchParams</span>) {
-  <span class="tok-k">return</span> NextResponse.<span class="tok-f">json</span>({
-    genere_le: <span class="tok-k">new</span> <span class="tok-t">Date</span>().<span class="tok-f">toISOString</span>(),
-    perimetre: <span class="tok-s">"France métropolitaine (hors DOM et collectivités d'outre-mer)"</span>,
-    base: <span class="tok-s">"Ministère de l'Éducation nationale, identifiants UAI"</span>,
-    filtres: <span class="tok-t">Object</span>.<span class="tok-f">fromEntries</span>(params),
-    ...(body <span class="tok-k">as object</span>),
-  });
-}</code></pre>
+<pre class="code"><code><span class="ln"><span class="tok-k">export const</span> dynamic = <span class="tok-s">"force-dynamic"</span>;</span><span class="ln"></span><span class="ln"><span class="tok-c">/** En-tête commun : sans ça, un chiffre floats sans contexte. */</span></span><span class="ln"><span class="tok-k">function</span> <span class="tok-f">envelope</span>(body: <span class="tok-t">unknown</span>, params: <span class="tok-t">URLSearchParams</span>) {</span><span class="ln">  <span class="tok-k">return</span> NextResponse.<span class="tok-f">json</span>({</span><span class="ln">    genere_le: <span class="tok-k">new</span> <span class="tok-t">Date</span>().<span class="tok-f">toISOString</span>(),</span><span class="ln">    perimetre: <span class="tok-s">"France métropolitaine (hors DOM et collectivités d'outre-mer)"</span>,</span><span class="ln">    base: <span class="tok-s">"Ministère de l'Éducation nationale, identifiants UAI"</span>,</span><span class="ln">    filtres: <span class="tok-t">Object</span>.<span class="tok-f">fromEntries</span>(params),</span><span class="ln">    ...(body <span class="tok-k">as object</span>),</span><span class="ln">  });</span><span class="ln">}</span></code></pre>
       </figure>
     </article>
 
-    <article class="project" id="p3" data-project data-index="03">
+    <article class="project" id="p5" data-project data-index="05">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>03</span><span class="project__lang">Rust</span></p>
+        <p class="project__num" data-reveal><span>05</span><span class="project__lang">Flutter</span></p>
+        <h3 data-reveal>NeuraGreen</h3>
+        <p class="project__desc" data-reveal>Rend visible ce que consomme une requête IA : CO₂e, eau, tokens et coût, par modèle et dans le temps. Les clés restent dans le Keychain ou le Keystore, le contenu des prompts n'est jamais lu, et tout l'historique reste consultable hors ligne.</p>
+        <ul class="tags" data-reveal><li>Flutter</li><li>privacy-first</li><li>hors ligne</li></ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/NeuraGreen" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">lib/features/dashboard/dashboard_provider.dart</span>
+        </figcaption>
+<pre class="code"><code><span class="ln"><span class="tok-k">for</span> (<span class="tok-k">var</span> log <span class="tok-k">in</span> aiUsageBox.values) {</span><span class="ln">  totalCost += log.costUsd ?? <span class="tok-n">0</span>;</span><span class="ln"></span><span class="ln">  <span class="tok-k">final</span> impact = modelImpacts[log.modelId] ?? modelImpacts[<span class="tok-s">'default'</span>]!;</span><span class="ln">  <span class="tok-k">final</span> totalTokens = log.promptTokens + log.completionTokens;</span><span class="ln"></span><span class="ln">  <span class="tok-k">final</span> co2 = (totalTokens / <span class="tok-n">1000</span>) *</span><span class="ln">      (impact.co2eGramsPer1000Tokens / <span class="tok-n">1000</span>); <span class="tok-c">// g → kg</span></span><span class="ln">  <span class="tok-k">final</span> water = (totalTokens / <span class="tok-n">1000</span>) *</span><span class="ln">      impact.waterLitersPer1000Tokens;</span><span class="ln"></span><span class="ln">  totalCO2 += co2;</span><span class="ln">  totalWater += water;</span><span class="ln">}</span></code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p6" data-project data-index="06">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>06</span><span class="project__lang">Rust</span></p>
         <h3 data-reveal>obsidian-rs</h3>
-        <p class="project__desc" data-reveal>
-          Client Obsidian natif écrit en Rust avec iced. Rendu GPU, thèmes
-          personnalisés, taille de fenêtre persistée. Aucune trace d'Electron :
-          un binaire unique.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>Rust</li><li>iced</li><li>desktop natif</li>
-        </ul>
+        <p class="project__desc" data-reveal>Client Obsidian natif en Rust avec iced : rendu GPU, thèmes clair et sombre appliqués à chaud, taille de fenêtre persistée. Un binaire unique, pas d'Electron — pour un éditeur de notes qui démarre vite et tient en mémoire.</p>
+        <ul class="tags" data-reveal><li>Rust</li><li>iced</li><li>desktop natif</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/obsidian-rs" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
         </a>
@@ -197,35 +207,16 @@
           <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="panel__file">src/main.rs</span>
         </figcaption>
-<pre class="code"><code><span class="tok-k">fn</span> <span class="tok-f">main</span>() -&gt; iced::<span class="tok-t">Result</span> {
-    iced::<span class="tok-f">application</span>(app::boot, app::update, app::view)
-        .<span class="tok-f">title</span>(<span class="tok-s">"obsidian-rs"</span>)
-        .<span class="tok-f">default_font</span>(obsidian_rs::ui::theme::<span class="tok-f">font</span>())
-        .<span class="tok-f">window_size</span>(<span class="tok-f">saved_window_size</span>())
-        .<span class="tok-f">centered</span>()
-        .<span class="tok-f">subscription</span>(app::subscription)
-        .<span class="tok-f">theme</span>(|app: &amp;obsidian_rs::app::App| {
-            <span class="tok-k">let</span> (bg, fg, accent) =
-                <span class="tok-k">if</span> app.current_theme.<span class="tok-f">eq_ignore_ascii_case</span>(<span class="tok-s">"light"</span>) {
-                    <span class="tok-c">…</span>
-                };
-        })
-}</code></pre>
+<pre class="code"><code><span class="ln"><span class="tok-k">fn</span> <span class="tok-f">main</span>() -&gt; iced::<span class="tok-t">Result</span> {</span><span class="ln">    iced::<span class="tok-f">application</span>(app::boot, app::update, app::view)</span><span class="ln">        .<span class="tok-f">title</span>(<span class="tok-s">"obsidian-rs"</span>)</span><span class="ln">        .<span class="tok-f">default_font</span>(obsidian_rs::ui::theme::<span class="tok-f">font</span>())</span><span class="ln">        .<span class="tok-f">window_size</span>(<span class="tok-f">saved_window_size</span>())</span><span class="ln">        .<span class="tok-f">centered</span>()</span><span class="ln">        .<span class="tok-f">subscription</span>(app::subscription)</span><span class="ln">        .<span class="tok-f">theme</span>(|app: &amp;obsidian_rs::app::App| {</span><span class="ln">            <span class="tok-k">let</span> (bg, fg, accent) =</span><span class="ln">                <span class="tok-k">if</span> app.current_theme.<span class="tok-f">eq_ignore_ascii_case</span>(<span class="tok-s">"light"</span>) {</span><span class="ln">                    <span class="tok-c">…</span></span><span class="ln">                };</span><span class="ln">        })</span><span class="ln">}</span></code></pre>
       </figure>
     </article>
 
-    <article class="project" id="p4" data-project data-index="04">
+    <article class="project" id="p7" data-project data-index="07">
       <div class="project__info">
-        <p class="project__num" data-reveal><span>04</span><span class="project__lang">Python</span></p>
+        <p class="project__num" data-reveal><span>07</span><span class="project__lang">Python</span></p>
         <h3 data-reveal>pentest-lab</h3>
-        <p class="project__desc" data-reveal>
-          Lab d'entraînement offensif : répliques de contrôleurs de portail captif
-          et de services réels, orchestrées en environnement isolé. Cibles et
-          données anonymisées, périmètre écrit noir sur blanc.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>sécurité offensive</li><li>Flask</li><li>lab isolé</li>
-        </ul>
+        <p class="project__desc" data-reveal>Répliques fidèles de contrôleurs de portail captif et de services réels, pour s'entraîner hors ligne. Chaque lab tourne en environnement isolé, avec un périmètre écrit dans <code>scope.yaml</code> et des cibles comme des données anonymisées.</p>
+        <ul class="tags" data-reveal><li>sécurité offensive</li><li>Flask</li><li>lab isolé</li></ul>
         <a class="project__link" href="https://github.com/j0ltdevv/pentest-lab" target="_blank" rel="noopener" data-reveal>
           Voir le code <span aria-hidden="true">↗</span>
         </a>
@@ -235,104 +226,17 @@
           <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
           <span class="panel__file">hotel-lab/fake-aruba/aruba.py</span>
         </figcaption>
-<pre class="code"><code><span class="tok-c">"""fake-aruba : réplique du redirecteur de portail captif du contrôleur Aruba observé
-sur le réseau Hotel Demo ville-demo (http://10.10.128.1/). Simule :
-  - la page meta-refresh
-  - le 302 vers login-url.php avec hash SHA-1 (H5 : secret statique faible planté)
-  - l'endpoint d'autorisation MAC appelé par le portail après login
-Usage mandat/lab uniquement — cf. scope.yaml à la racine.
-"""</span>
-<span class="tok-k">from</span> flask <span class="tok-k">import</span> Flask, redirect, request
-
-app = <span class="tok-f">Flask</span>(__name__)
-
-<span class="tok-c"># MAC "authentifiées" après validation du portail (miroir du contrôleur)</span>
-authorized_macs = <span class="tok-f">set</span>()</code></pre>
-      </figure>
-    </article>
-
-    <article class="project" id="p5" data-project data-index="05">
-      <div class="project__info">
-        <p class="project__num" data-reveal><span>05</span><span class="project__lang">Python</span></p>
-        <h3 data-reveal>bots</h3>
-        <p class="project__desc" data-reveal>
-          Trois bots Telegram qui tournent en continu : un pont vers un agent,
-          un assistant déterministe anti-hallucination et une automatisation
-          par vision (ADB + OpenCV) sur émulateur.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>Telegram</li><li>OpenCV</li><li>systemd</li>
-        </ul>
-        <a class="project__link" href="https://github.com/j0ltdevv/bots" target="_blank" rel="noopener" data-reveal>
-          Voir le code <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <figure class="panel" data-tilt data-reveal>
-        <figcaption class="panel__bar">
-          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="panel__file">mypybot/bot.py</span>
-        </figcaption>
-<pre class="code"><code><span class="tok-k">def</span> <span class="tok-f">connect_device</span>():
-    <span class="tok-f">print</span>(<span class="tok-s">"Tentative de connexion ADB..."</span>)
-    client = <span class="tok-f">AdbClient</span>(host=ADB_HOST, port=ADB_PORT)
-    devices = client.<span class="tok-f">devices</span>()
-
-    <span class="tok-k">if</span> <span class="tok-f">len</span>(devices) == <span class="tok-n">0</span>:
-        <span class="tok-f">print</span>(<span class="tok-s">"Aucun appareil trouvé. Assure-toi que BlueStacks est lancé et ADB activé."</span>)
-        <span class="tok-k">return</span> <span class="tok-t">None</span>
-
-    device = devices[<span class="tok-n">0</span>]
-    <span class="tok-f">print</span>(<span class="tok-s">f"Connecté à {device.serial}"</span>)
-    <span class="tok-k">return</span> device</code></pre>
-      </figure>
-    </article>
-
-    <article class="project" id="p6" data-project data-index="06">
-      <div class="project__info">
-        <p class="project__num" data-reveal><span>06</span><span class="project__lang">Python</span></p>
-        <h3 data-reveal>pronote-blocus</h3>
-        <p class="project__desc" data-reveal>
-          Bot Telegram et PWA de rattrapage des devoirs PRONOTE. Les identifiants
-          sont chiffrés au repos avec Fernet, jamais loggués, jamais renvoyés
-          dans un message.
-        </p>
-        <ul class="tags" data-reveal>
-          <li>chiffrement</li><li>Telegram</li><li>PWA</li>
-        </ul>
-        <a class="project__link" href="https://github.com/j0ltdevv/pronote-blocus" target="_blank" rel="noopener" data-reveal>
-          Voir le code <span aria-hidden="true">↗</span>
-        </a>
-      </div>
-      <figure class="panel" data-tilt data-reveal>
-        <figcaption class="panel__bar">
-          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
-          <span class="panel__file">app/crypto.py</span>
-        </figcaption>
-<pre class="code"><code><span class="tok-c">"""Chiffrement au repos des identifiants PRONOTE.
-
-Le jeton n'est jamais écrit en clair, jamais loggué, jamais renvoyé
-dans un message Telegram. Seule la base (et son backup) contient
-le chiffré.
-"""</span>
-<span class="tok-k">from</span> cryptography.fernet <span class="tok-k">import</span> Fernet
-
-
-<span class="tok-k">def</span> <span class="tok-f">_fernet</span>(secret: <span class="tok-t">str</span>) -&gt; <span class="tok-t">Fernet</span>:
-    <span class="tok-k">if</span> <span class="tok-k">not</span> secret:
-        <span class="tok-k">raise</span> <span class="tok-f">SecretError</span>(<span class="tok-s">"APP_SECRET vide"</span>)
-    <span class="tok-k">try</span>:
-        <span class="tok-k">return</span> <span class="tok-f">Fernet</span>(secret.<span class="tok-f">encode</span>())
-    <span class="tok-k">except</span> (<span class="tok-t">ValueError</span>, <span class="tok-t">TypeError</span>) <span class="tok-k">as</span> exc:
-        <span class="tok-c">…  # message explicite si la clé est mal formée</span></code></pre>
+<pre class="code"><code><span class="ln"><span class="tok-t">@app.get</span>(<span class="tok-s">"/cmd/authenticate"</span>)</span><span class="ln"><span class="tok-k">def</span> <span class="tok-f">authenticate</span>():</span><span class="ln">    <span class="tok-d">"""Callback d'autorisation : le portail valide une session -&gt; le</span><span class="ln">    contrôleur autorise la MAC. Vérification de la MAC côté contrôleur</span><span class="ln">    volontairement sommaire (miroir du modèle réel où la MAC est</span><span class="ln">    l'identité)."""</span></span><span class="ln">    mac = request.args.<span class="tok-f">get</span>(<span class="tok-s">"mac"</span>, <span class="tok-s">""</span>)</span><span class="ln">    <span class="tok-k">if</span> <span class="tok-k">not</span> mac:</span><span class="ln">        <span class="tok-k">return</span> {<span class="tok-s">"error"</span>: <span class="tok-s">"mac_required"</span>}, <span class="tok-n">400</span></span><span class="ln">    authorized_macs.<span class="tok-f">add</span>(mac.<span class="tok-f">lower</span>())</span><span class="ln">    <span class="tok-k">return</span> {<span class="tok-s">"status"</span>: <span class="tok-s">"authorized"</span>, <span class="tok-s">"mac"</span>: mac}</span></code></pre>
       </figure>
     </article>
 
     <p class="more" data-reveal>
       Aussi en ligne :
-      <a href="https://github.com/j0ltdevv/NeuraGreen" target="_blank" rel="noopener">NeuraGreen</a>,
-      <a href="https://github.com/j0ltdevv/spotify-app" target="_blank" rel="noopener">spotify-app</a>,
-      <a href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener">venv-proxy</a>,
+      <a href="https://github.com/j0ltdevv/redteam-agent" target="_blank" rel="noopener">redteam-agent</a>,
+      <a href="https://github.com/j0ltdevv/bots" target="_blank" rel="noopener">bots</a>,
+      <a href="https://github.com/j0ltdevv/pronote-blocus" target="_blank" rel="noopener">pronote-blocus</a>,
       <a href="https://github.com/j0ltdevv/bookmark-watcher" target="_blank" rel="noopener">bookmark-watcher</a>,
+      <a href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener">venv-proxy</a>,
       <a href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener">stack</a>.
     </p>
   </section>
@@ -390,7 +294,7 @@ le chiffré.
   <div class="foot__mark" aria-hidden="true">Poitou</div>
 </footer>
 
-<script src="assets/gl.js?v=6"></script>
-<script src="assets/app.js?v=6"></script>
+<script src="assets/gl.js?v=10"></script>
+<script src="assets/app.js?v=10"></script>
 </body>
 </html>
