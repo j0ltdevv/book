@@ -9,6 +9,44 @@
   const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
 
+  /* ── parallaxe du hero ────────────────────── */
+  const heroTitle = document.querySelector(".hero__title");
+  const heroSub = document.querySelector(".hero__sub");
+  const heroSpec = document.querySelector(".hero__spec");
+  const heroEyebrow = document.querySelector(".hero .eyebrow");
+
+  function parallaxHero(y) {
+    if (reduce || !heroTitle) return;
+    const h = window.innerHeight;
+    if (y <= 0) {
+      heroTitle.style.transform = "";
+      heroTitle.style.opacity = "";
+      [heroSub, heroSpec, heroEyebrow].forEach((el) => {
+        if (!el) return;
+        el.style.transform = "";
+        el.style.opacity = "";
+      });
+      return;
+    }
+    if (y > h * 1.1) return;
+    const k = Math.min(y / h, 1);
+
+    heroTitle.style.transform = `translate3d(0, ${(k * 92).toFixed(1)}px, 0)`;
+    heroTitle.style.opacity = String(Math.max(0, 1 - k * 1.35));
+
+    if (heroSub) {
+      heroSub.style.transform = `translate3d(0, ${(k * 46).toFixed(1)}px, 0)`;
+      heroSub.style.opacity = String(Math.max(0, 1 - k * 1.5));
+    }
+    if (heroSpec) {
+      heroSpec.style.transform = `translate3d(0, ${(k * 26).toFixed(1)}px, 0)`;
+      heroSpec.style.opacity = String(Math.max(0, 1 - k * 2.4));
+    }
+    if (heroEyebrow) {
+      heroEyebrow.style.opacity = String(Math.max(0, 1 - k * 2.2));
+    }
+  }
+
   /* ── barre de progression ─────────────────── */
   const bar = document.querySelector(".progress span");
   let ticking = false;
@@ -23,6 +61,8 @@
 
     const nav = document.querySelector(".nav");
     if (nav) nav.classList.toggle("is-scrolled", y > 40);
+
+    parallaxHero(y);
   }
 
   window.addEventListener("scroll", () => {
@@ -173,6 +213,32 @@
     }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
 
     projects.forEach((p) => io2.observe(p));
+
+    /* le rail n'apparaît que dans la zone projets */
+    const railZone = document.querySelector("#projets");
+    if (railZone) {
+      const ioRail = new IntersectionObserver((entries) => {
+        entries.forEach((e) => rail.classList.toggle("is-on", e.isIntersecting));
+      }, { rootMargin: "-15% 0px -25% 0px", threshold: 0 });
+      ioRail.observe(railZone);
+    }
+  }
+
+  /* ── nav : section courante ───────────────── */
+  const navLinks = [...document.querySelectorAll('.nav__links a[href^="#"]')];
+  const activeSections = navLinks
+    .map((a) => document.querySelector(a.getAttribute("href")))
+    .filter(Boolean);
+
+  if (navLinks.length && activeSections.length && "IntersectionObserver" in window) {
+    const ioNav = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const href = `#${entry.target.id}`;
+        navLinks.forEach((a) => a.classList.toggle("is-current", a.getAttribute("href") === href));
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+    activeSections.forEach((sec) => ioNav.observe(sec));
   }
 
   /* ── année du footer ─────────────────────── */
