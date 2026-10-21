@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="fr" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Julien Poitou — code, sécurité, systèmes</title>
+<meta name="description" content="Portfolio de Julien Poitou : outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="Julien Poitou — code, sécurité, systèmes">
+<meta property="og:description" content="Outils de sécurité pour agents IA, applications desktop en Rust, bots autonomes.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2305060a'/%3E%3Ccircle cx='16' cy='16' r='5' fill='%236ff3cf'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@300;400;500;600&family=Instrument+Serif:ital@1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script>document.documentElement.classList.replace('no-js','js');</script>
+</head>
+<body>
+
+<canvas id="bg" aria-hidden="true"></canvas>
+<div class="grain" aria-hidden="true"></div>
+<div class="progress" aria-hidden="true"><span></span></div>
+<div class="cursor" aria-hidden="true"></div>
+
+<a class="skip" href="#projets">Aller aux projets</a>
+
+<header class="nav">
+  <a class="brand" href="#top" aria-label="Retour en haut">
+    <span class="brand__dot" aria-hidden="true"></span> Julien Poitou
+  </a>
+  <nav class="nav__links" aria-label="Navigation principale">
+    <a href="#projets">Projets</a>
+    <a href="#approche">Approche</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ───────────── HERO ───────────── -->
+  <section id="top" class="hero">
+    <p class="eyebrow" data-reveal>Portfolio — 2026</p>
+
+    <h1 class="hero__title">
+      <span class="hero__line"><span class="hero__word">Julien</span></span>
+      <span class="hero__line"><span class="hero__word hero__word--serif">Poitou</span></span>
+    </h1>
+
+    <p class="hero__sub" data-reveal>
+      16 ans. Je construis des outils de sécurité pour agents IA,
+      des applications desktop en Rust et des bots qui tournent 24/7.
+    </p>
+
+    <dl class="hero__spec" data-reveal>
+      <div><dt>Base</dt><dd>Bordeaux, FR</dd></div>
+      <div><dt>Code</dt><dd><a href="https://github.com/j0ltdevv" target="_blank" rel="noopener">github.com/j0ltdevv</a></dd></div>
+      <div><dt>Statut</dt><dd class="is-live">disponible pour un stage</dd></div>
+    </dl>
+
+    <div class="scroll-cue" aria-hidden="true">
+      <span class="scroll-cue__line"></span>
+      <span class="scroll-cue__label">défiler</span>
+    </div>
+  </section>
+
+
+  <!-- ───────────── BANDEAU TECHNIQUE ───────────── -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span><i>◆</i>Rust</span><span><i>◆</i>TypeScript</span><span><i>◆</i>Python</span>
+      <span><i>◆</i>GLSL</span><span><i>◆</i>Next.js</span><span><i>◆</i>SQLite</span>
+      <span><i>◆</i>Linux</span><span><i>◆</i>Telegram API</span><span><i>◆</i>OpenCV</span>
+      <span><i>◆</i>iced</span><span><i>◆</i>Fernet</span><span><i>◆</i>systemd</span>
+      <span><i>◆</i>Rust</span><span><i>◆</i>TypeScript</span><span><i>◆</i>Python</span>
+      <span><i>◆</i>GLSL</span><span><i>◆</i>Next.js</span><span><i>◆</i>SQLite</span>
+      <span><i>◆</i>Linux</span><span><i>◆</i>Telegram API</span><span><i>◆</i>OpenCV</span>
+      <span><i>◆</i>iced</span><span><i>◆</i>Fernet</span><span><i>◆</i>systemd</span>
+    </div>
+  </div>
+
+  <!-- ───────────── PROJETS ───────────── -->
+  <section id="projets" class="projects">
+    <header class="section-head">
+      <h2 data-reveal>Projets</h2>
+      <p data-reveal>Six choses que j'ai construites, du coffre-fort de clés au client desktop.</p>
+    </header>
+
+    <article class="project" id="p1" data-project data-index="01">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>01</span><span class="project__lang">TypeScript</span></p>
+        <h3 data-reveal>MCPGUARD</h3>
+        <p class="project__desc" data-reveal>
+          Un coffre-fort pour les identifiants des serveurs MCP. Les clés d'API
+          des agents IA vivent dans le keychain de l'OS et sont référencées par
+          une URI <code>mcpguard://</code> — jamais en clair dans un fichier de config.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>CLI</li><li>keychain OS</li><li>agents IA</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/MCPGUARD" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">src/lib/vault.ts</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-k">import</span> keytar <span class="tok-k">from</span> <span class="tok-s">'keytar'</span>;
+
+<span class="tok-k">const</span> SERVICE_NAME = <span class="tok-s">'mcpguard'</span>;
+<span class="tok-k">const</span> VAULT_PREFIX = <span class="tok-s">'mcpguard://'</span>;
+
+<span class="tok-k">export class</span> <span class="tok-f">Vault</span> {
+  <span class="tok-k">private</span> service: <span class="tok-t">string</span>;
+
+  <span class="tok-f">constructor</span>(serviceName: <span class="tok-t">string</span> = SERVICE_NAME) {
+    <span class="tok-k">this</span>.service = serviceName;
+  }
+
+  <span class="tok-c">/** Generate a vault reference string for a credential */</span>
+  <span class="tok-k">static</span> <span class="tok-f">generateReference</span>(id: <span class="tok-t">string</span>): <span class="tok-t">string</span> {
+    <span class="tok-k">return</span> <span class="tok-s">`${VAULT_PREFIX}${id}`</span>;
+  }
+}</code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p2" data-project data-index="02">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>02</span><span class="project__lang">Next.js</span></p>
+        <h3 data-reveal>observatoire</h3>
+        <p class="project__desc" data-reveal>
+          Registre sourcé et auditable des mobilisations lycéennes. API publique
+          versionnée, exports CSV et GeoJSON stables pour les journalistes :
+          chaque chiffre renvoie à la requête qui l'a produit.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>open data</li><li>SQLite</li><li>API versionnée</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/observatoire" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">app/api/v1/routes.ts</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-k">export const</span> dynamic = <span class="tok-s">"force-dynamic"</span>;
+
+<span class="tok-c">/** En-tête commun : sans ça, un chiffre floats sans contexte. */</span>
+<span class="tok-k">function</span> <span class="tok-f">envelope</span>(body: <span class="tok-t">unknown</span>, params: <span class="tok-t">URLSearchParams</span>) {
+  <span class="tok-k">return</span> NextResponse.<span class="tok-f">json</span>({
+    genere_le: <span class="tok-k">new</span> <span class="tok-t">Date</span>().<span class="tok-f">toISOString</span>(),
+    perimetre: <span class="tok-s">"France métropolitaine (hors DOM)"</span>,
+    base: <span class="tok-s">"Ministère de l'Éducation nationale, UAI"</span>,
+    filtres: <span class="tok-t">Object</span>.<span class="tok-f">fromEntries</span>(params),
+    ...(body <span class="tok-k">as object</span>),
+  });
+}</code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p3" data-project data-index="03">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>03</span><span class="project__lang">Rust</span></p>
+        <h3 data-reveal>obsidian-rs</h3>
+        <p class="project__desc" data-reveal>
+          Client Obsidian natif écrit en Rust avec iced. Rendu GPU, thèmes
+          personnalisés, taille de fenêtre persistée. Aucune trace d'Electron :
+          un binaire unique.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>Rust</li><li>iced</li><li>desktop natif</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/obsidian-rs" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">src/main.rs</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-k">fn</span> <span class="tok-f">main</span>() -&gt; iced::<span class="tok-t">Result</span> {
+    iced::<span class="tok-f">application</span>(app::boot, app::update, app::view)
+        .<span class="tok-f">title</span>(<span class="tok-s">"obsidian-rs"</span>)
+        .<span class="tok-f">default_font</span>(obsidian_rs::ui::theme::<span class="tok-f">font</span>())
+        .<span class="tok-f">window_size</span>(<span class="tok-f">saved_window_size</span>())
+        .<span class="tok-f">centered</span>()
+        .<span class="tok-f">subscription</span>(app::subscription)
+        .<span class="tok-f">theme</span>(|app: &amp;obsidian_rs::app::App| {
+            <span class="tok-k">let</span> (bg, fg, accent) =
+                <span class="tok-k">if</span> app.current_theme.<span class="tok-f">eq_ignore_ascii_case</span>(<span class="tok-s">"light"</span>) {
+                    <span class="tok-c">…</span>
+                };
+        })
+}</code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p4" data-project data-index="04">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>04</span><span class="project__lang">Python</span></p>
+        <h3 data-reveal>pentest-lab</h3>
+        <p class="project__desc" data-reveal>
+          Lab d'entraînement offensif : répliques de contrôleurs de portail captif
+          et de services réels, orchestrées en environnement isolé. Cibles et
+          données anonymisées, périmètre écrit noir sur blanc.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>sécurité offensive</li><li>Flask</li><li>lab isolé</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/pentest-lab" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">hotel-lab/fake-aruba/aruba.py</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-c">"""fake-aruba : réplique du redirecteur de portail captif du
+contrôleur Aruba observé sur le réseau Hotel Demo ville-demo.
+
+  - la page meta-refresh
+  - le 302 vers login-url.php avec hash SHA-1
+  - l'endpoint d'autorisation MAC
+
+Usage mandat/lab uniquement — cf. scope.yaml à la racine.
+"""</span>
+<span class="tok-k">from</span> flask <span class="tok-k">import</span> Flask, redirect, request
+
+app = <span class="tok-f">Flask</span>(__name__)
+
+<span class="tok-c"># MAC authentifiées après validation du portail</span>
+authorized_macs = <span class="tok-f">set</span>()</code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p5" data-project data-index="05">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>05</span><span class="project__lang">Python</span></p>
+        <h3 data-reveal>bots</h3>
+        <p class="project__desc" data-reveal>
+          Trois bots Telegram qui tournent en continu : un pont vers un agent,
+          un assistant déterministe anti-hallucination et une automatisation
+          par vision (ADB + OpenCV) sur émulateur.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>Telegram</li><li>OpenCV</li><li>systemd</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/bots" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">mypybot/bot.py</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-k">def</span> <span class="tok-f">connect_device</span>():
+    <span class="tok-f">print</span>(<span class="tok-s">"Tentative de connexion ADB..."</span>)
+    client = <span class="tok-f">AdbClient</span>(host=ADB_HOST, port=ADB_PORT)
+    devices = client.<span class="tok-f">devices</span>()
+
+    <span class="tok-k">if</span> <span class="tok-f">len</span>(devices) == <span class="tok-n">0</span>:
+        <span class="tok-f">print</span>(<span class="tok-s">"Aucun appareil trouvé."</span>)
+        <span class="tok-k">return</span> <span class="tok-t">None</span>
+
+    device = devices[<span class="tok-n">0</span>]
+    <span class="tok-f">print</span>(<span class="tok-s">f"Connecté à {device.serial}"</span>)
+    <span class="tok-k">return</span> device</code></pre>
+      </figure>
+    </article>
+
+    <article class="project" id="p6" data-project data-index="06">
+      <div class="project__info">
+        <p class="project__num" data-reveal><span>06</span><span class="project__lang">Python</span></p>
+        <h3 data-reveal>pronote-blocus</h3>
+        <p class="project__desc" data-reveal>
+          Bot Telegram et PWA de rattrapage des devoirs PRONOTE. Les identifiants
+          sont chiffrés au repos avec Fernet, jamais loggués, jamais renvoyés
+          dans un message.
+        </p>
+        <ul class="tags" data-reveal>
+          <li>chiffrement</li><li>Telegram</li><li>PWA</li>
+        </ul>
+        <a class="project__link" href="https://github.com/j0ltdevv/pronote-blocus" target="_blank" rel="noopener" data-reveal>
+          Voir le code <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <figure class="panel" data-tilt data-reveal>
+        <figcaption class="panel__bar">
+          <span class="panel__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="panel__file">app/crypto.py</span>
+        </figcaption>
+<pre class="code"><code><span class="tok-c">"""Chiffrement au repos des identifiants PRONOTE.
+
+Le jeton n'est jamais écrit en clair, jamais loggué, jamais renvoyé
+dans un message Telegram. Seule la base (et son backup) contient
+le chiffré.
+"""</span>
+<span class="tok-k">from</span> cryptography.fernet <span class="tok-k">import</span> Fernet
+
+
+<span class="tok-k">def</span> <span class="tok-f">_fernet</span>(secret: <span class="tok-t">str</span>) -&gt; <span class="tok-t">Fernet</span>:
+    <span class="tok-k">if</span> <span class="tok-k">not</span> secret:
+        <span class="tok-k">raise</span> <span class="tok-f">SecretError</span>(<span class="tok-s">"APP_SECRET vide"</span>)
+    <span class="tok-k">try</span>:
+        <span class="tok-k">return</span> <span class="tok-f">Fernet</span>(secret.<span class="tok-f">encode</span>())
+    <span class="tok-k">except</span> (<span class="tok-t">ValueError</span>, <span class="tok-t">TypeError</span>) <span class="tok-k">as</span> exc:
+        <span class="tok-k">raise</span> <span class="tok-f">SecretError</span>(<span class="tok-s">"Clé Fernet invalide"</span>) <span class="tok-k">from</span> exc</code></pre>
+      </figure>
+    </article>
+
+    <p class="more" data-reveal>
+      Aussi en ligne :
+      <a href="https://github.com/j0ltdevv/NeuraGreen" target="_blank" rel="noopener">NeuraGreen</a>,
+      <a href="https://github.com/j0ltdevv/spotify-app" target="_blank" rel="noopener">spotify-app</a>,
+      <a href="https://github.com/j0ltdevv/venv-proxy" target="_blank" rel="noopener">venv-proxy</a>,
+      <a href="https://github.com/j0ltdevv/bookmark-watcher" target="_blank" rel="noopener">bookmark-watcher</a>,
+      <a href="https://github.com/j0ltdevv/stack" target="_blank" rel="noopener">stack</a>.
+    </p>
+  </section>
+
+  <!-- ───────────── APPROCHE ───────────── -->
+  <section id="approche" class="approach">
+    <header class="section-head">
+      <h2 data-reveal>Approche</h2>
+    </header>
+    <div class="approach__grid">
+      <div class="approach__item" data-reveal>
+        <span class="approach__num">01</span>
+        <h3>Ça tourne vraiment</h3>
+        <p>Chaque projet de cette page est déployé ou exécuté chez moi, pas laissé à l'état de prototype.</p>
+      </div>
+      <div class="approach__item" data-reveal>
+        <span class="approach__num">02</span>
+        <h3>Sécurité par défaut</h3>
+        <p>Aucun secret en clair : keychain de l'OS, chiffrement au repos, secrets retirés de l'historique Git.</p>
+      </div>
+      <div class="approach__item" data-reveal>
+        <span class="approach__num">03</span>
+        <h3>Comprendre avant d'empiler</h3>
+        <p>Un shader GLSL écrit à la main plutôt qu'une librairie : cette page n'a ni framework ni template.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ───────────── CONTACT ───────────── -->
+  <section id="contact" class="contact">
+    <p class="eyebrow" data-reveal>Contact</p>
+    <h2 class="contact__title" data-reveal>
+      On en parle&nbsp;?
+    </h2>
+    <p class="contact__sub" data-reveal>
+      Je cherche un stage de découverte en informatique et cybersécurité.
+      Le plus simple reste GitHub — tout mon code est public.
+    </p>
+    <div class="contact__links" data-reveal>
+      <a class="btn" href="https://github.com/j0ltdevv" target="_blank" rel="noopener">
+        github.com/j0ltdevv <span aria-hidden="true">↗</span>
+      </a>
+      <a class="btn btn--ghost" href="mailto:">Écrire un mail</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="foot__row">
+    <span>© <span data-year>2026</span> Julien Poitou</span>
+    <span>Écrit à la main — HTML, CSS, GLSL</span>
+    <a href="https://github.com/j0ltdevv" target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a>
+  </div>
+  <div class="foot__mark" aria-hidden="true">Poitou</div>
+</footer>
+
+<script src="assets/gl.js"></script>
+<script src="assets/app.js"></script>
+</body>
+</html>
