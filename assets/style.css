@@ -292,6 +292,7 @@ main > section{
 }
 
 .hero__sub{
+  text-wrap:pretty;
   margin:clamp(1.6rem,3.4vw,2.6rem) 0 0;
   max-width:46ch;
   font-size:clamp(1rem,1.55vw,1.22rem);
@@ -365,6 +366,7 @@ main > section{
 }
 .section-head h2{
   margin:0;
+  text-wrap:balance;
   font-size:clamp(2.1rem,4.8vw,3.4rem);
   line-height:1.05;
   letter-spacing:-0.035em;
@@ -423,6 +425,7 @@ main > section{
 
 .project h3{
   margin:0 0 1rem;
+  text-wrap:balance;
   font-size:clamp(1.9rem,3.9vw,2.9rem);
   line-height:1.02;
   letter-spacing:-0.04em;
@@ -773,6 +776,7 @@ main > section{
 }
 .contact__title{
   margin:0;
+  text-wrap:balance;
   font-size:clamp(2.4rem,7vw,5.5rem);
   line-height:.95;
   letter-spacing:-0.045em;
